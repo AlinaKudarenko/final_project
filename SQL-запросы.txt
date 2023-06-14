@@ -1,0 +1,33 @@
+Задание 1.
+
+# В соответствии с правилами стиля
+
+SELECT c.login,
+       COUNT(o.track)
+FROM "Couriers" AS c
+INNER JOIN "Orders" AS o ON c.id = o."courierId"
+WHERE o."inDelivery" = true
+GROUP BY c.login
+ORDER BY c.login;
+
+# Для консоли
+
+SELECT c.login, COUNT(o.track) FROM "Couriers" AS c INNER JOIN "Orders" AS o ON c.id = o."courierId" WHERE o."inDelivery" = true GROUP BY c.login ORDER BY c.login;
+
+
+Задание 2. 
+
+# В соответствии с правилами стиля
+
+SELECT track,
+       CASE 
+	   WHEN finished = true THEN 2
+	   WHEN cancelled = true THEN -1
+           WHEN "inDelivery" = true THEN 1
+           ELSE 0
+       END status
+FROM "Orders";
+
+# Для консоли
+
+SELECT track, CASE WHEN finished = true THEN 2 WHEN cancelled = true THEN -1 WHEN "inDelivery" = true THEN 1 ELSE 0 END status FROM "Orders";
